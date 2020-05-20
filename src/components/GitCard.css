@@ -1,0 +1,42 @@
+.GitCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 250px;
+  max-width: 300px;
+  margin: 15px;
+  padding: 25px;
+  border-radius: 5px;
+}
+
+.GitCard-number {
+  font-weight: lighter;
+  font-size: 2em;
+}
+
+.GitCard-avatar {
+  height: 180px;
+  width: 180px;
+}
+
+.GitCard-item-title {
+  font-weight: bold;
+  color: rebeccapurple;
+}
+
+.GitCard-item {
+  display: flex;
+  padding: 5px 0;
+  margin: 5px 0;
+}
+
+.light {
+  background-color: rgb(220, 220, 220);
+  color: rgb(34, 34, 34);
+}
+
+.dark {
+  background-color: rgb(65, 65, 65);
+  color: rgb(220, 220, 220);
+}

@@ -1,0 +1,52 @@
+1) npm init -y
+2) npm i -D prettier
+3) add to "scripts" package.json: "format": "prettier \"src/**/*.{js,html}\" --write"
+4) - activar format on save
+   - ir a preferencias "require config", tildar la opcion de prettier
+   - crear un archivo .prettierrc en el root del proyecto con {}
+5) npm install -D eslint eslint-config-prettier
+6) crear un archivo ".eslintrc.json" y configurarlo:
+   {
+      "extends": ["eslint:recommended", "prettier", "prettier/react"],
+      "plugins": [],
+      "parserOptions": {
+        "ecmaVersion": 2020,
+        "sourceType": "module",
+        "ecmaFeatures": {
+          "jsx": true
+        }
+      },
+      "env": {
+        "es6": true,
+        "browser": true,
+        "node": true
+      }
+    }
+
+7) agregar en "scripts" el comando "eslint": "eslint \"src/**/*.{js,jsx}\" --quiet" al package.json
+8) crear el ".gitignore"
+   node_modules/
+   .DS_Store
+   .cache/
+   dist/
+   coverage/
+   .vscode/
+   .env
+9) npm install -D parcel-bundler
+10) agregar al package.json scripts: "dev": "parcel src/index.html"
+11) npm i react react-dom
+12) npm install -D babel-eslint eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react
+13) update eslintrc.json
+    "extends": [
+      "eslint:recommended",
+      "plugin:import/errors",
+      "plugin:react/recommended",
+      "plugin:jsx-a11y/recommended",
+      "prettier",
+      "prettier/react"
+    ],
+    "rules": {
+      "react/prop-types": 0,
+      "no-console": 1
+    },
+    "plugins": ["react", "import", "jsx-a11y"],

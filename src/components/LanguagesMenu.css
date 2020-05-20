@@ -1,0 +1,14 @@
+.Languages {
+  display: flex;
+}
+
+.Languages-option {
+  list-style: none;
+}
+
+.Languages-option__btn {
+  background-color: #fff;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}

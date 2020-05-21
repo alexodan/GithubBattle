@@ -1,3 +1,18 @@
+.App {
+  font-family: Roboto, Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue,
+    sans-serif;
+}
+
+.App.dark {
+  background-color: #1c2022;
+}
+
+.container {
+  max-width: 1200px;
+  padding: 30px 15px;
+  margin: 0 auto;
+}
+
 .App-repos {
   display: flex;
   flex-wrap: wrap;

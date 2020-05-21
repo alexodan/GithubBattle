@@ -8,7 +8,15 @@ import {
 import "./GitCard.css";
 import ThemeContext from "./ThemeContext";
 
-const GitCard = ({ number, imgLogo, name, stars, forks, openIssues }) => {
+const GitCard = ({
+  number,
+  imgLogo,
+  name,
+  stars,
+  forks,
+  openIssues,
+  htmlUrl,
+}) => {
   const { theme } = useContext(ThemeContext);
 
   return (
@@ -16,7 +24,7 @@ const GitCard = ({ number, imgLogo, name, stars, forks, openIssues }) => {
       <h2 className="GitCard-number">#{number}</h2>
       <img className="GitCard-avatar" alt={name} src={imgLogo} />
       <div className="GitCard-item-title">
-        <span>{name}</span>
+        <a href={htmlUrl}>{name}</a>
       </div>
       <div className="GitCard-info">
         <div className="GitCard-info-item">
@@ -33,7 +41,7 @@ const GitCard = ({ number, imgLogo, name, stars, forks, openIssues }) => {
         </div>
         <div className="GitCard-info-item">
           <FaExclamationTriangle color="rgb(240, 100, 90)" size={20} />
-          <span>{openIssues} openIssues</span>
+          <span>{openIssues} open issues</span>
         </div>
       </div>
     </div>

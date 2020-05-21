@@ -1,35 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { render } from "react-dom";
-import GitCard from "./components/GitCard";
-import LanguagesMenu from "./components/LanguagesMenu";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
+import NavBar from "./components/NavBar";
 import ThemeContext from "./components/ThemeContext";
 
-import { getPopularRepos } from "./github-api";
-import { LANGUAGES } from "./utils";
-
 import "./App.css";
+import Popular from "./components/Popular";
 
 const App = () => {
-  const [currentLanguage, setCurrentLanguage] = useState("all");
-  const [repos, setRepos] = useState([]);
   const [theme, setTheme] = useState("light");
-
-  useEffect(() => {
-    getPopularRepos(currentLanguage)
-      .then((resp) => resp.json())
-      .then((data) => {
-        setRepos(data.items);
-      })
-      .catch();
-    return () => {};
-  }, [currentLanguage]);
 
   const toggleTheme = () => {
     setTheme(theme === "light" ? "dark" : "light");
-  };
-
-  const changeLanguage = (language) => {
-    setCurrentLanguage(language);
   };
 
   const value = React.useMemo(
@@ -42,27 +25,18 @@ const App = () => {
 
   return (
     <React.StrictMode>
-      <div className="App">
+      <Router>
         <ThemeContext.Provider value={value}>
-          <LanguagesMenu
-            languages={LANGUAGES}
-            changeLanguage={changeLanguage}
-          />
-          <div className="App-repos">
-            {repos.map((repo, idx) => (
-              <GitCard
-                key={repo.id}
-                number={idx + 1}
-                imgLogo={repo.owner.avatar_url}
-                name={repo.owner.login}
-                stars={repo.stargazers_count}
-                forks={repo.forks}
-                openIssues={repo.open_issues_count}
-              />
-            ))}
+          <div className={`App ${theme}`}>
+            <div className="container">
+              <NavBar />
+              <Switch>
+                <Route exact path="/" component={Popular} />
+              </Switch>
+            </div>
           </div>
         </ThemeContext.Provider>
-      </div>
+      </Router>
     </React.StrictMode>
   );
 };

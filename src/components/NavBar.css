@@ -1,0 +1,39 @@
+.NavBar {
+  display: flex;
+  justify-content: space-between;
+}
+
+.NavBar.dark {
+  background-color: inherit;
+}
+
+.NavBar .row {
+  display: flex;
+}
+
+.NavBar .row li {
+  list-style: none;
+  margin: 10px;
+  font-weight: bold;
+}
+
+.NavBar .row .active {
+  color: rgb(156, 46, 46);
+}
+
+.NavBar-btn {
+  background-color: #fff;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 32px;
+}
+
+.NavBar-btn.dark {
+  background-color: #1c2022;
+}
+
+.link {
+  text-decoration: none;
+  color: inherit;
+}

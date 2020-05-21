@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./LanguagesMenu.css";
+import ThemeContext from "./ThemeContext";
 
-const LanguagesMenu = ({ languages, changeLanguage }) => {
-  // const theme = useContext(ThemeContext);
+const LanguagesMenu = ({ languages, selected, changeLanguage }) => {
+  const { theme } = useContext(ThemeContext);
+
   const selectLanguage = (language) => {
     changeLanguage(language);
   };
@@ -12,7 +14,9 @@ const LanguagesMenu = ({ languages, changeLanguage }) => {
       {languages.map((lang, idx) => (
         <li key={idx} className="Languages-option">
           <button
-            className="Languages-option__btn"
+            className={`Languages-option__btn ${theme} ${
+              lang === selected ? "active" : ""
+            }`}
             onClick={() => selectLanguage(lang)}
           >
             {lang}

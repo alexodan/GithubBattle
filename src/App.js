@@ -61,7 +61,6 @@ const App = () => {
               />
             ))}
           </div>
-          <pre>{JSON.stringify(repos, null, 2)}</pre>
         </ThemeContext.Provider>
       </div>
     </React.StrictMode>

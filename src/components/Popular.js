@@ -32,18 +32,22 @@ const Popular = () => {
         changeLanguage={changeLanguage}
       />
       <div className="App-repos">
-        {repos.map((repo, idx) => (
-          <GitCard
-            key={repo.id}
-            number={idx + 1}
-            imgLogo={repo.owner.avatar_url}
-            name={repo.owner.login}
-            stars={repo.stargazers_count}
-            forks={repo.forks}
-            openIssues={repo.open_issues_count}
-            htmlUrl={repo.html_url}
-          />
-        ))}
+        {repos.length === 0 ? (
+          <p>Loading...</p>
+        ) : (
+          repos.map((repo, idx) => (
+            <GitCard
+              key={repo.id}
+              number={idx + 1}
+              imgLogo={repo.owner.avatar_url}
+              name={repo.owner.login}
+              stars={repo.stargazers_count}
+              forks={repo.forks}
+              openIssues={repo.open_issues_count}
+              htmlUrl={repo.html_url}
+            />
+          ))
+        )}
       </div>
     </div>
   );

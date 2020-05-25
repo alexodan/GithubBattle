@@ -1,0 +1,7 @@
+1) hover en open issues te da las etiquetas
+   - verificar si existe en la API
+
+2) searching for battle should give you results while typing (debouncing) useDebounce?
+
+3) loading when changing popular repos
+ 

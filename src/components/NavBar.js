@@ -15,12 +15,16 @@ const NavBar = () => {
     <div className={`NavBar ${theme}`}>
       <ul className="row">
         <li>
-          <NavLink to="/" activeStyle={activeStyle} className="link">
+          <NavLink to="/" activeStyle={activeStyle} className={`link ${theme}`}>
             Popular
           </NavLink>
         </li>
         <li>
-          <NavLink to="/battle" activeStyle={activeStyle} className="link">
+          <NavLink
+            to="/battle"
+            activeStyle={activeStyle}
+            className={`link ${theme}`}
+          >
             Battle
           </NavLink>
         </li>

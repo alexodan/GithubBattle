@@ -35,5 +35,9 @@
 
 .link {
   text-decoration: none;
-  color: inherit;
+  color: #1c2022;
+}
+
+.link.dark {
+  color: rgb(230, 230, 230);
 }

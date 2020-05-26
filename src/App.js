@@ -4,9 +4,10 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import NavBar from "./components/NavBar";
 import ThemeContext from "./components/ThemeContext";
+import Popular from "./components/Popular";
+import Battle from "./components/Battle";
 
 import "./App.css";
-import Popular from "./components/Popular";
 
 const App = () => {
   const [theme, setTheme] = useState("light");
@@ -32,6 +33,7 @@ const App = () => {
               <NavBar />
               <Switch>
                 <Route exact path="/" component={Popular} />
+                <Route exact path="/battle" component={Battle} />
               </Switch>
             </div>
           </div>

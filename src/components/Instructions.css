@@ -1,0 +1,31 @@
+.Instructions h2 {
+  margin-bottom: 50px;
+  text-align: center;
+  font-weight: normal;
+  font-size: 2rem;
+}
+
+.Battle-instructions-cards {
+  display: flex;
+  justify-content: space-around;
+}
+
+.instruction-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.instruction-card-icon {
+  background-color: rgb(235, 235, 235);
+  width: 200px;
+  height: 200px;
+  padding: 30px;
+}
+
+.instruction-card-title {
+  font-weight: 300;
+  font-size: 1.4rem;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}

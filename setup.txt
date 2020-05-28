@@ -50,3 +50,7 @@
       "no-console": 1
     },
     "plugins": ["react", "import", "jsx-a11y"],
+
+14) to use emotion (css in js)
+    - npm install @emotion/core @emotion/babel-preset-css-prop
+    - 

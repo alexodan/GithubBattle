@@ -1,10 +1,10 @@
 import React, { useState, useContext } from "react";
 import ThemeContext from "./ThemeContext";
 import Instructions from "./Instructions";
-import { FaTimesCircle, FaFileExcel } from "react-icons/fa";
-import { fetchPlayer } from "../github-api";
+import PlayerPreview from "./PlayerPreview";
 
 import "./Battle.css";
+import PlayerInput from "./PlayerInput";
 
 const Battle = () => {
   const { theme } = useContext(ThemeContext);
@@ -13,27 +13,20 @@ const Battle = () => {
   const [playerTwo, setPlayerTwo] = useState("");
   const [playerTwoInfo, setPlayerTwoInfo] = useState(null);
 
-  const handleChange = (e) => {
-    if (e.target.name === "playerOne") {
-      setPlayerOne(e.target.value);
-    } else if (e.target.name === "playerTwo") {
-      setPlayerTwo(e.target.value);
-    }
+  const submitPlayer = (playerId, player) => {
+    playerId === "playerOne"
+      ? setPlayerOneInfo({
+          avatar: `https://github.com/${player}.png?size=200`,
+          username: player,
+        })
+      : setPlayerTwoInfo({
+          avatar: `https://github.com/${player}.png?size=200`,
+          username: player,
+        });
   };
 
-  const submitPlayerOne = () => {
-    setPlayerOneInfo({
-      avatar: `https://github.com/${playerOne}.png?size=200`,
-      username: playerOne,
-    });
-  };
-
-  const submitPlayerTwo = () => {
-    setPlayerTwoInfo({
-      avatar: `https://github.com/${playerTwo}.png?size=200`,
-      username: playerTwo,
-    });
-  };
+  const handleChange = (id, value) =>
+    id === "playerOne" ? setPlayerOne(value) : setPlayerTwo(value);
 
   return (
     <div className={`Battle ${theme}`}>
@@ -41,31 +34,29 @@ const Battle = () => {
         <Instructions />
         <h2>Players</h2>
         <div className="Battle-players">
-          <div className="Battle-players-one">
+          <div className="player">
             <p>Player One</p>
             {playerOneInfo === null ? (
-              <div className="player-input">
-                <input type="text" onChange={handleChange} name="playerOne" />
-                <button onSubmit={submitPlayerOne}>Submit</button>
-              </div>
+              <PlayerInput
+                onSubmit={() => submitPlayer("playerOne", playerOne)}
+                handleChange={(e) => handleChange("playerOne", e.target.value)}
+              />
             ) : (
-              <span>Player One info</span>
+              <PlayerPreview {...playerOneInfo} />
             )}
           </div>
-          <div className="Battle-players-two">
+          <div className="player">
             <p>Player Two</p>
             {playerTwoInfo === null ? (
-              <div className="player-input">
-                <input type="text" onChange={handleChange} name="playerTwo" />
-                <button onSubmit={submitPlayerTwo}>Submit</button>
-              </div>
+              <PlayerInput
+                onSubmit={() => submitPlayer("playerTwo", playerTwo)}
+                handleChange={(e) => handleChange("playerTwo", e.target.value)}
+              />
             ) : (
-              <span>Player Two info</span>
+              <PlayerPreview {...playerTwoInfo} />
             )}
           </div>
         </div>
-        <FaTimesCircle size={120} />
-        <FaFileExcel size={120} />
       </div>
     </div>
   );

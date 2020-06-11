@@ -28,26 +28,24 @@ const Button = (theme) => {
 
 const Battle = () => {
   const { theme } = useContext(ThemeContext);
-  const [playerOne, setPlayerOne] = useState("");
   const [playerOneInfo, setPlayerOneInfo] = useState(null);
-  const [playerTwo, setPlayerTwo] = useState("");
   const [playerTwoInfo, setPlayerTwoInfo] = useState(null);
   const ThemedButton = Button(theme);
 
   const submitPlayer = (playerId, player) => {
-    playerId === "playerOne"
-      ? setPlayerOneInfo({
-          avatar: `https://github.com/${player}.png?size=200`,
-          username: player,
-        })
-      : setPlayerTwoInfo({
-          avatar: `https://github.com/${player}.png?size=200`,
-          username: player,
-        });
+    if (player === "") return;
+    if (playerId === "playerOne") {
+      setPlayerOneInfo({
+        avatar: `https://github.com/${player}.png?size=200`,
+        username: player,
+      });
+    } else {
+      setPlayerTwoInfo({
+        avatar: `https://github.com/${player}.png?size=200`,
+        username: player,
+      });
+    }
   };
-
-  const handleChange = (id, value) =>
-    id === "playerOne" ? setPlayerOne(value) : setPlayerTwo(value);
 
   const battle = () => {};
 
@@ -55,25 +53,25 @@ const Battle = () => {
     <div className={`Battle ${theme}`}>
       <div className="Battle-instructions">
         <Instructions />
-        <h2>Players</h2>
+        <h2 className="Battle-instructions__title">Players</h2>
         <div className="Battle-players">
           <div className="player">
-            <p>Player One</p>
+            <p className="player-number">Player One</p>
             {playerOneInfo === null ? (
               <PlayerInput
-                onSubmit={() => submitPlayer("playerOne", playerOne)}
-                handleChange={(e) => handleChange("playerOne", e.target.value)}
+                onSubmit={(label, player) => submitPlayer(label, player)}
+                label="playerOne"
               />
             ) : (
               <PlayerPreview {...playerOneInfo} />
             )}
           </div>
           <div className="player">
-            <p>Player Two</p>
+            <p className="player-number">Player Two</p>
             {playerTwoInfo === null ? (
               <PlayerInput
-                onSubmit={() => submitPlayer("playerTwo", playerTwo)}
-                handleChange={(e) => handleChange("playerTwo", e.target.value)}
+                onSubmit={(label, player) => submitPlayer(label, player)}
+                label="playerTwo"
               />
             ) : (
               <PlayerPreview {...playerTwoInfo} />

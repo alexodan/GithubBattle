@@ -53,4 +53,5 @@
 
 14) to use emotion (css in js)
     - npm install @emotion/core @emotion/babel-preset-css-prop
-    - 
+    - npm install --save @emotion/styled
+    - npm install --save-dev babel-plugin-emotion

@@ -5,6 +5,26 @@ import PlayerPreview from "./PlayerPreview";
 
 import "./Battle.css";
 import PlayerInput from "./PlayerInput";
+import styled from "@emotion/styled";
+
+const Button = (theme) => {
+  const background = theme === "dark" ? "#fff" : "#000";
+  const color = theme === "dark" ? "#000" : "#fff";
+  return styled.button`
+    background-color: ${background};
+    color: ${color};
+    border: none;
+    border-radius: 5px;
+    width: 210px;
+    height: 42px;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    display: block;
+    margin: 0 auto;
+    cursor: pointer;
+  `;
+};
 
 const Battle = () => {
   const { theme } = useContext(ThemeContext);
@@ -12,6 +32,7 @@ const Battle = () => {
   const [playerOneInfo, setPlayerOneInfo] = useState(null);
   const [playerTwo, setPlayerTwo] = useState("");
   const [playerTwoInfo, setPlayerTwoInfo] = useState(null);
+  const ThemedButton = Button(theme);
 
   const submitPlayer = (playerId, player) => {
     playerId === "playerOne"
@@ -27,6 +48,8 @@ const Battle = () => {
 
   const handleChange = (id, value) =>
     id === "playerOne" ? setPlayerOne(value) : setPlayerTwo(value);
+
+  const battle = () => {};
 
   return (
     <div className={`Battle ${theme}`}>
@@ -56,6 +79,11 @@ const Battle = () => {
               <PlayerPreview {...playerTwoInfo} />
             )}
           </div>
+        </div>
+        <div className="btn-container">
+          {playerOneInfo && playerTwoInfo && (
+            <ThemedButton onClick={battle}>Battle</ThemedButton>
+          )}
         </div>
       </div>
     </div>

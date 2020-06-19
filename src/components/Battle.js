@@ -6,6 +6,7 @@ import PlayerPreview from "./PlayerPreview";
 import "./Battle.css";
 import PlayerInput from "./PlayerInput";
 import styled from "@emotion/styled";
+import { useHistory } from "react-router-dom";
 
 const Button = (theme) => {
   const background = theme === "dark" ? "#fff" : "#000";
@@ -31,6 +32,7 @@ const Battle = () => {
   const [playerOneInfo, setPlayerOneInfo] = useState(null);
   const [playerTwoInfo, setPlayerTwoInfo] = useState(null);
   const ThemedButton = Button(theme);
+  const history = useHistory();
 
   const submitPlayer = (playerId, player) => {
     if (player === "") return;
@@ -47,7 +49,12 @@ const Battle = () => {
     }
   };
 
-  const battle = () => {};
+  const battle = () => {
+    console.log(playerOneInfo.username, playerTwoInfo.username);
+    history.push(
+      `/battle/results?playerOne=${playerOneInfo.username}&playerTwo=${playerTwoInfo.username}`
+    );
+  };
 
   return (
     <div className={`Battle ${theme}`}>

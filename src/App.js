@@ -8,6 +8,7 @@ import Popular from "./components/Popular";
 import Battle from "./components/Battle";
 
 import "./App.css";
+import Results from "./components/Results";
 
 const App = () => {
   const [theme, setTheme] = useState("light");
@@ -34,6 +35,7 @@ const App = () => {
               <Switch>
                 <Route exact path="/" component={Popular} />
                 <Route exact path="/battle" component={Battle} />
+                <Route exact path="/battle/results" component={Results} />
               </Switch>
             </div>
           </div>
